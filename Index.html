@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loan Data Generator</title>
+
+<style>
+body{
+    font-family: Arial;
+    padding:30px;
+    background:#f4f6f8;
+}
+
+.container{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    width:650px;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+}
+
+.hidden{
+    display:none;
+}
+
+textarea{
+    width:100%;
+    height:250px;
+}
+
+button{
+    padding:12px;
+    background:#004aad;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+
+<h2>Loan Details</h2>
+
+
+Applicant NRI:
+<select id="appNri">
+<option>Yes</option>
+<option>No</option>
+</select>
+
+
+Co Applicant NRI:
+<select id="coNri">
+<option>Yes</option>
+<option>No</option>
+</select>
+
+
+Product:
+<select id="product" onchange="showProduct()">
+<option>Select</option>
+<option>Home Loan</option>
+<option>LAP</option>
+</select>
+
+
+
+<div id="homeOptions" class="hidden">
+
+<h3>Home Loan Type</h3>
+
+<select id="homeType">
+
+<option>Purchase of new or old House/Flat</option>
+
+<option>
+Purchase of Plot and Construction of house
+</option>
+
+<option>
+Construction on already owned plot
+</option>
+
+<option>
+Extend/Renovate/Repair house
+</option>
+
+<option>Refinance</option>
+<option>Top-up</option>
+<option>Balance Transfer</option>
+
+<option>
+Home Decor Furnishing and Interior
+</option>
+
+</select>
+
+</div>
+
+
+
+<div id="lapOptions" class="hidden">
+
+<h3>LAP Type</h3>
+
+<select id="lapType">
+
+<option>Residential Self Occupied</option>
+<option>Residential Rented</option>
+<option>Residential Vacant</option>
+
+<option>Commercial Self Occupied</option>
+
+<option>Commercial Rented</option>
+
+<option>Non Residential Purchase</option>
+
+<option>
+LAP Against Industrial Property
+</option>
+
+<option>
+Industrial Property Purchase
+</option>
+
+<option>
+Special Collateral Nursing Home
+</option>
+
+<option>
+Dropline Overdraft
+</option>
+
+
+</select>
+
+</div>
+
+
+<h3>Customer Type</h3>
+
+
+<select id="customer" onchange="showCustomer()">
+
+<option>Select</option>
+
+<option>
+Salaried Individual
+</option>
+
+<option>
+Self Employed Professionals SEP
+</option>
+
+<option>
+Self Employed Non Professionals SENP
+</option>
+
+</select>
+
+
+
+
+<div id="salaryBox" class="hidden">
+
+
+<h3>Salaried Details</h3>
+
+
+Name:
+<input id="name">
+
+
+Age:
+<input type="number" id="age">
+
+
+CIBIL:
+<input type="number" id="cibil">
+
+
+Salary:
+<input type="number" id="salary">
+
+
+Pending Loans:
+
+<select id="pending" onchange="loanCheck()">
+
+<option>No</option>
+<option>Yes</option>
+
+</select>
+
+
+<div id="loanDetails" class="hidden">
+
+
+Number of Loans:
+<input type="number" id="loanNo">
+
+
+Total Pending Amount:
+<input type="number" id="amount">
+
+
+Any Late Payment:
+
+<select id="late" onchange="lateCheck()">
+
+<option>No</option>
+<option>Yes</option>
+
+</select>
+
+
+<div id="lateBox" class="hidden">
+
+Late Payment Count:
+
+<input type="number" id="lateCount">
+
+</div>
+
+</div>
+
+
+Experience In Company:
+
+<input type="number" id="experience">
+
+
+</div>
+
+
+<br>
+
+<button onclick="generate()">
+Generate Text
+</button>
+
+
+<h3>Output</h3>
+
+<textarea id="output"></textarea>
+
+
+</div>
+
+
+
+<script>
+
+
+function showProduct(){
+
+let p=document.getElementById("product").value;
+
+
+homeOptions.style.display =
+p=="Home Loan"?"block":"none";
+
+
+lapOptions.style.display =
+p=="LAP"?"block":"none";
+
+}
+
+
+
+function showCustomer(){
+
+
+let c=document.getElementById("customer").value;
+
+
+if(c=="Salaried Individual"){
+
+salaryBox.style.display="block";
+
+}
+
+else{
+
+salaryBox.style.display="none";
+
+alert("Coming Soon");
+
+}
+
+
+}
+
+
+
+function loanCheck(){
+
+loanDetails.style.display =
+pending.value=="Yes"?
+"block":"none";
+
+}
+
+
+function lateCheck(){
+
+lateBox.style.display =
+late.value=="Yes"?
+"block":"none";
+
+}
+
+
+
+
+function generate(){
+
+
+
+let text =
+
+`
+Applicant NRI : ${appNri.value}
+
+Co Applicant NRI : ${coNri.value}
+
+Product : ${product.value}
+
+
+Customer Details
+----------------
+
+Name : ${name.value}
+
+Age : ${age.value}
+
+CIBIL Score : ${cibil.value}
+
+Salary : ₹${salary.value}
+
+Pending Loan : ${pending.value}
+
+Experience : ${experience.value} Years
+
+`;
+
+
+
+if(pending.value=="Yes"){
+
+text +=`
+
+Number Of Loans : ${loanNo.value}
+
+Pending Amount : ₹${amount.value}
+
+Late Payment : ${late.value}
+
+`;
+
+}
+
+
+
+if(late.value=="Yes"){
+
+text+=`
+
+Late Payment Count:
+${lateCount.value}
+
+`;
+
+}
+
+
+
+output.value=text;
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
