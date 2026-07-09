@@ -1,0 +1,34 @@
+So here we are developing a basic website this is page 1 , Depending upon options the text box will appear and i need to fill in the data and end a text box will showcase and data will appear that can be pasted into my notebook.
+
+So the options are 
+Applicant NRI - Yes or no , Co-Applicant NRI - Yes or No
+
+Products - 1) Home loan 2) Lap ( loan against Property) Two options select one
+
+Home Loan options - 1) Purchase of new or old House/Flat
+		   2) Purchase of Plot and Construction of a house on it
+3)Construction of house on an already owned plot
+4)Extend/renovate/repair of house already owned
+5)Refinance
+6)Top-up
+7)Balance Transfer
+8)Home Décor for Furnishing and Interior designing
+
+Lap ( loan against Property) Options- 
+1)Residental Self Occupied
+2)Residental Rented
+3)Residental Vacant
+4)Commercial Self Occupied
+5)Commercial Rented
+6)Non-Residential Purchase
+7)Lap Against Industrial Property
+8)Lap Against Industrial Property Purchase
+9)Special Collateral- Nursing Home Property
+10)Dropline Overdraft
+
+1) Salaried Individuals 2) Self Employed Professionals SEP 3) Self Employed Non - Professionals SENP [ when i click on these options below the boxes should appear]
+1) Salaried Individuals- Name:[Text here] , age:[Number] , cibil rating:[Number],salary:[Number],Pending loans ( yes or No) {if yes Number of loans : [number], Total Amount pending on loan : [number], any late payment: [Yes or No]{if yes how many times: [Number]}},Experience in company : [number].
+2) Self Employed Professionals SEP- coming soon 
+3) Self Employed Non - Professionals SENP - coming soon
+
+
